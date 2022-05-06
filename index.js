@@ -60,6 +60,14 @@ async function run(){
             const result = await productCollection.deleteOne(query);
             res.send(result);
         })
+
+        // POST Operation
+        app.post("/product", async(req, res)=>{
+
+            const newProduct = req.body;
+            const result = await productCollection.insertOne(newProduct);
+            res.send(result);
+        })
     }
     finally{
 
