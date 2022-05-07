@@ -47,8 +47,8 @@ async function run() {
         }
         console.log("decoded", decoded);
         req.decoded = decoded;
+        next();
       });
-      next();
     }
 
     //Getting all Product
@@ -78,9 +78,8 @@ async function run() {
         const cursor = productCollection.find(query);
         const products = await cursor.toArray();
         res.send(products);
-      }
-      else {
-          res.status(403).send({message: "forbidden access"})
+      } else {
+        res.status(403).send({ message: "forbidden access" });
       }
     });
 
